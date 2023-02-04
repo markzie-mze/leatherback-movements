@@ -2,13 +2,13 @@
 
 ## The Nature Conservancy Melanesia Project
 
-The Nature Conservancy Melanesia Programme's flagship marine conservation project in the Solomon Islands in the south-western Pacific.
+Research and management of the leatherback turtle is one of The Nature Conservancy Melanesia Programme's flagship marine conservation projects in the Solomon Islands in the south-western Pacific.
 
 
-
+The project here comprises several parts including: 
 
 ### Animation tracking movements 
-Maps depicting tracked individuals in the Pacific
+Maps depicting tracked individuals in the Pacific. 
 
 
 ### Animated dive profile 
