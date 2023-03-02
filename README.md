@@ -7,8 +7,12 @@ Research and management of the leatherback turtle is one of The Nature Conservan
 
 The project here comprises several parts including: 
 
-### Animation tracking movements 
+### Long distance movements 
 Maps depicting tracked individuals in the Pacific. 
+
+
+### Local breeding area ranging behaviour
+Kernel density analyses of "home range" areas around nesting beaches
 
 
 ### Animated dive profile 
