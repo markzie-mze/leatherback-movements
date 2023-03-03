@@ -4,4 +4,8 @@
 1. World EEZ cropped to Solomons Islands only
   - filename: Solomons_EEZ
   
-2. 
+2. Combined the following to generate a single shapefile to use to clip locations
+- 12nm Territorial Seas
+- 24nm Contiguous area
+- Archipelagic zone
+
