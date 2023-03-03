@@ -1,2 +1,7 @@
-Workflow for the analysis of leatherback turtle breeding area movement range analyses
+## Workflow for the analysis of leatherback turtle breeding area movement range analyses
 
+### Clipping areas for defining which location points to use. Downloaded marine boundaries from marineregions.org (remember to attribute)
+1. World EEZ cropped to Solomons Islands only
+  - filename: Solomons_EEZ
+  
+2. 
