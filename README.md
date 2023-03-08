@@ -1,6 +1,6 @@
 # Leatherback turtle movements in the Solomon Islands 
 
-## The Nature Conservancy Melanesia Project
+##A TNC Melanesia Project
 
 Research and management of the leatherback turtle is one of The Nature Conservancy Melanesia Programme's flagship marine conservation projects in the Solomon Islands in the south-western Pacific.
 
