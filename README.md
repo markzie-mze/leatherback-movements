@@ -9,14 +9,20 @@ View the [Tableau dashboard here](https://public.tableau.com/app/profile/mark.zi
 
 The project here comprises several parts including: 
 
+
 ### Long distance movements 
 Maps depicting tracked individuals in the Pacific. 
 
 
 ### Local breeding area ranging behaviour
 Kernel density analyses of "home range" areas around nesting beaches
+- list steps
+- generate python code to repeat steps for individuals
+-
 
 
 ### Animated dive profile 
 Graphic showing dive profiles of individuals. Idea is to show an animation of turtles 3D use of space. Draw track in relation to surface and a DEM model of seafloor
+
+
 
