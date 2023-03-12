@@ -1,8 +1,9 @@
 ### Script for KDE quantile calculations
 
 #Modified via Chris Garrard (and updated by Tyler Hatch) at Utah State
-
 #See: https://www.usu.edu/geospatial/tutorials/advanced/home-range-estimations
+
+#This script relates specifically to generation of quantiles (50, 95). For remaining script re KDE see ...
 
 #Import required libraries
 import arcpy
