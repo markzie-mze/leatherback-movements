@@ -1,0 +1,69 @@
+### Script for KDE quantile calculations
+
+#Modified via Chris Garrard (and updated by Tyler Hatch) at Utah State
+
+#See: https://www.usu.edu/geospatial/tutorials/advanced/home-range-estimations
+
+#Import required libraries
+import arcpy
+import os
+
+arcpy.CheckOutExtension('spatial')  #calls the Spatial Analyst tool
+arcpy.env.overwriteOutput = True    #lets us overwrite files so they don't pile up
+
+#Gets the parameters you set (the coyote point file and an Output Folder and two temporary files). 
+#The parameters are stored as a string of text that holds the file location of each input.
+
+initial_points = arcpy.GetParameterAsText(0)
+output_folder = arcpy.GetParameterAsText(1)
+
+with arcpy.da.SearchCursor (initial_points, 'Animal') as searcher: 
+    animals = []
+    for row in searcher:
+        animal row[0]
+        if animal not in animals:
+            animals.append(animal)
+            
+for animal in animals:
+    arcpy.AddMessage('Working on animal {}...'.format (animal))
+    
+    coyote_points = os.path.join(output_folder, "temp_animal{}.shp".format(animal))
+    
+    arcpy.Select_analysis (initial_points, coyote_points, where_clause="animal" = \'{}'.format(animal))
+    raster arcpy.sa.KernelDensity (coyote_points, None, 30)
+    
+    kernel_raster = os.path.join(output_folder, "kernel_raster_animal{}.tif".format(animal)) 
+    raster.save(kernel_raster)
+    
+    coyote_points_values = os.path.join(output_folder, "temp2_animal{}.shp".format(animal)) 
+    
+    arcpy.sa.ExtractValuesToPoints (coyote_points, kernel_raster, coyote_points_values)
+    
+    kernel_list = []
+    
+    with arcpy.da.SearchCursor (coyote_points_values, 'RASTERVALU') as searcher:
+        for row in searcher:
+            kernel_list.append(row[0])
+
+    kernel_list.sort(reverse = True) 
+    num_records = len(kernel_list)
+    
+    fifty_cut int (num_records*.5)
+    ninety five_cut = int(num_records*.95)
+    
+    core_cut kernel_list [fifty_cut-1]
+    home_range_cut = kernel_list [ninety_five_cut-1]
+
+    raster_max = arcpy.GetRasterProperties_management (kernel_raster, "MAXIMUM")
+    core_raster = arcpy.sa. Reclassify (kernel_raster, "Value", "0 {0} NODATA; {0} {1} 50".format(core_cut, raster_max), "DATA")
+    home_range_raster arcpy.sa. Reclassify (kernel_raster, "Value", "0 {0} NODATA; {0} {1} 95".format (home_range_cut, raster_max), "DATA") 
+    
+    core_raster.save(os.path.join(output_folder, "Core_Raster_{}.tif".format(animal)))
+    home_range_raster.save(os.path.join(output_folder, "Home_Range_Raster_{}.tif".format(animal)))
+
+    arcpy.RasterToPolygon_conversion (core_raster, os.path.join(output_folder, "Core_Polygon_{}.shp".format(animal)), "SIMPLIFY", "Value")
+    arcpy.RasterToPolygon_conversion (home_range_raster, os.path.join(output_folder, "Home_Range_Polygon_{}.shp".format(animal)), "SIMPLIFY", "Value")
+
+    arcpy.Delete_management (coyote_points)
+    arcpy.Delete_management (coyote_points_values)
+    arcpy.Delete_management (kernel_raster)
