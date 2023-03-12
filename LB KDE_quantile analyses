@@ -13,7 +13,6 @@ arcpy.env.overwriteOutput = True    #lets us overwrite files so they don't pile 
 
 #Gets the parameters you set (the coyote point file and an Output Folder and two temporary files). 
 #The parameters are stored as a string of text that holds the file location of each input.
-
 initial_points = arcpy.GetParameterAsText(0)
 output_folder = arcpy.GetParameterAsText(1)
 
